@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+
+    <!-- =====BOX ICONS===== -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Portfolio website complete</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+
+    ::selection {
+        color: #fff;
+        background: #1cc7d0;
+    }
+
+    .wrapper {
+        height: 400px;
+        width: 320px;
+        position: relative;
+        transform-style: preserve-3d;
+        perspective: 1000px;
+    }
+
+    .wrapper .card {
+        position: absolute;
+        color: aliceblue;
+        height: 100%;
+        width: 100%;
+        padding: 5px;
+        background: #626e99;
+        border-radius: 10px;
+        transform: translateY(0deg);
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+        box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    }
+
+    .wrapper:hover>.front-face {
+        transform: rotateY(-180deg);
+    }
+
+    .wrapper .card img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .wrapper .back-face {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+        transform: rotateY(180deg);
+    }
+
+    .wrapper:hover>.back-face {
+        transform: rotateY(0deg);
+    }
+
+    .wrapper .back-face img {
+        height: 150px;
+        width: 150px;
+        padding: 5px;
+        border-radius: 50%;
+        background: linear-gradient(375deg, #a96767, #2e7ade);
+    }
+
+    .wrapper .back-face .info {
+        text-align: center;
+    }
+
+    .back-face .info .title {
+        font-size: 30px;
+        font-weight: 500;
+    }
+
+    .back-face ul {
+        display: flex;
+    }
+
+    .back-face ul a {
+        display: block;
+        height: 40px;
+        width: 40px;
+        color: #fff;
+        text-align: center;
+        margin: 0 5px;
+        line-height: 38px;
+        border: 2px solid transparent;
+        border-radius: 50%;
+        background: linear-gradient(375deg, #1cc7d0, #2ede98);
+        transition: all 0.5s ease;
+    }
+
+    .back-face ul a:hover {
+        color: #1cc7d0;
+        border-color: #1cc7d0;
+        background: linear-gradient(375deg, transparent, transparent);
+    }
+
+    body {
+        background-color: #dae1e6;
+    }
+
+    #box {
+        background-color: rgba(93, 85, 85, 0.1) !important;
+    }
+
+    .box:hover {
+        /* border-radius: 10px; */
+        background-color: rgba(31, 31, 31, 0.4);
+        color: rgb(255, 255, 255) !important;
+        border: 1px solid black;
+        padding: 2px;
+        box-shadow: 5px 5px 5px rgb(7, 6, 6);
+    }
+
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap");
+
+
+    .achievements {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .achievements .box_achievments {
+        position: relative;
+        width: 20rem;
+        height: 20rem;
+        margin: 4rem;
+    }
+
+    .achievements .box_achievments:hover .imgbox_achievments {
+        box-shadow: 10px 12px 10px rgb(82, 82, 79);
+        transform: translate(-3.5rem, -7.5rem);
+    }
+
+    .achievements .box_achievments:hover .content {
+        transform: translate(3.5rem, 3.5rem);
+    }
+
+    .imgbox_achievments {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .imgbox_achievments img {
+        border-radius: 10px;
+        border: 10px solid rgb(22, 18, 18);
+        width: 20rem;
+        height: 20rem;
+        object-fit: cover;
+        resize: both;
+    }
+
+    .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 1.5rem;
+        display: flex;
+        color: aliceblue;
+        justify-content: center;
+        background-color: rgb(110, 99, 99);
+        z-index: 1;
+        align-items: flex-end;
+        text-align: center;
+        transition: 0.5s ease-in-out;
+    }
+
+    .content h2 {
+        display: block;
+        font-size: 2rem;
+        color: rgb(255, 208, 208);
+        font-weight: bold;
+        line-height: 20rem;
+        letter-spacing: 1px;
+    }
+
+    .content span {
+        color: rgb(255, 255, 255);
+        font-size: 1.4rem;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    @media (max-width: 600px) {
+        .achievements .box_achievments:hover .content {
+            transform: translate(0, 9.5rem);
+        }
+
+        .achievements .box_achievments:hover .imgbox_achievments {
+            transform: translate(0, -3.5rem);
+        }
+    }
+</style>
+
+<body style="background-color: rgb(89, 85, 85,0.2);">
+    <!--===== HEADER =====-->
+    <header class="l-header" style="background-color:#000000 ;">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="#" class="nav__logo box" style="color:aliceblue ;">JYOTI KHATRI</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a style="color:aliceblue ;" href="#home"
+                            class="nav__link active box">Home</a>
+                    </li>
+                    <li class="nav__item"><a style="color:aliceblue ;" href="#about" class="nav__link box">About</a>
+                    </li>
+                    <li class="nav__item"><a style="color:aliceblue ;" href="#skills" class="nav__link box">Personal
+                            Information</a></li>
+                    <li class="nav__item"><a style="color:aliceblue ;" href="#work"
+                            class="nav__link box">Achievements</a>
+                    </li>
+                    <li class="nav__item"><a style="color:aliceblue ;" href="#contact" class="nav__link box">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div style="background-color: aliceblue;" class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--===== HOME =====-->
+        <section class="home bd-grid" id="home">
+            <div class="home__data">
+                <h1 class="home__title"><span style="font-size:x-large;">Hey there, I'am </span><span
+                        style="font-size: x-large; color: #8e8484;" class="home__title-color">JYOTI</span> <span
+                        style="font-size:x-large;"><br>Professional Educational Consultant </span></h1>
+
+                <a href="#contact" class="button" style="background-color:#000000 ;">Contact</a>
+            </div>
+
+            <div class="home__social">
+                <a href="https://www.linkedin.com/in/jyoti2910" class="home__social-icon"><i
+                        class='bx bxl-linkedin'></i></a>
+                <a href="https://instagram.com/_jyoti_khatri_?igshid=ZDdkNTZiNTM=" class="home__social-icon"><i
+                        class='bx bxl-instagram'></i></a>
+                <a href="https://www.facebook.com/profile.php?id=100034580207713&mibextid=ZbWKwL"
+                    class="home__social-icon"><i class='bx bxl-facebook'></i></a>
+            </div>
+
+            <div class="home__img">
+
+                <img style="border: 10px solid #141619;border-radius: 100%;" src="assets\img\perfil.png" alt="">
+            </div>
+        </section>
+        <hr style="border: 2px solid rgb(103, 90, 90);margin-left: 20px;margin-right: 20px;border-radius: 60px;">
+        <!--===== ABOUT =====-->
+        <section class="about section " id="about">
+            <h2 class="section-title" style="color:black ;">About</h2>
+
+            <div class="about__container bd-grid">
+                <div class="about__img">
+                    <img src="assets/img/about.jpeg" alt="">
+                </div>
+
+                <div>
+                    <h2 class="about__subtitle">I'am JYOTI</h2>
+                    <p style="font-family:cursive;font-size: large;font-style:oblique;" class="about__text" ,>With a
+                        track record of success in the leisure and international education sectors, certified foreign
+                        education consultant Analytical, sales, communication, and easily adaptable skillsets holding a
+                        Post Graduate Diploma from Gujarat University with a concentration on International Business,
+                        strong community and social services professional. I've been offering qualified consulting
+                        services to clients in Ahmedabad and beyond since 2019. Building an effective and results-driven
+                        relationship is always my main priority, from strategic planning to creative solutions. Get in
+                        touch to learn more about my vision and consulting approach.<br><br>
+
+                        From tackling personal decisions to reaching important milestones, my job is to guide you on the
+                        path of success. I’m fueled by my commitment to excellence and go the extra mile to make sure
+                        clients are fully satisfied with my work.As a professional Consultant , I believe in maintaining
+                        a positive mindset, creating partnerships with a purpose, and always striving for significant
+                        outcomes. Contact me today for an initial consultation, and find out more about how I can tailor
+                        my services to your needs. </p>
+                </div>
+            </div>
+        </section>
+        <hr style="border: 2px solid rgb(103, 90, 90);margin-left: 20px;margin-right: 20px;border-radius: 60px;">
+        <!--===== SKILLS =====-->
+        <section class="skills section " id="skills">
+            <h2 class="section-title" style="color: black;">PERSONAL INFORMATION</h2><br>
+
+            <div class="skills__container bd-grid" style="display: inline;">
+                <div>
+                    <h2 class="skills__subtitle">Profesional Skills</h2>
+                    <p class="skills__text">As an education consultant, I am dedicated to providing accurate information
+                        to prospective clients. I began my journey in 2019 and have since counseled more than 3000
+                        students on their aspirations to study overseas. Be committed to a smooth application and visa
+                        procedure. Being recognised as a reliable education consultant for international studies.</p>
+                    <div class="w3-container w3-card w3-white w3-margin-bottom" id="box"
+                        style="background-color:rgba(255, 255, 255, 0.1)  ;">
+                        <h2 class="w3-text-grey w3-padding-16"><i
+                                class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience
+                        </h2>
+                        <div class="w3-container">
+                            <h5 class="w3-opacity"><b>Education Consultant / AECC Global</b></h5>
+                            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>February 2022 -
+                                <span class="w3-tag w3-teal w3-round">Present </span>
+                            </h6>
+                            <p>Informing students about opportunities for international study, Providing suitable
+                                guidance on finances, institutions and programmes, the application procedure, submitting
+                                an application for an offer letter at the students' desired college, helping the
+                                students acquire the documents they will need for each of their individual visa
+                                applications, actively participate in seminars and education fairs hosted by various
+                                universities, able to understand the questions of potential customers and offer the best
+                                solutions.</p>
+                            <hr>
+                        </div>
+                        <div class="w3-container">
+                            <h5 class="w3-opacity"><b>Designation - Education Consultant / Aussizz Group</b></h5>
+                            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>June 2021 -
+                                January 2022</h6>
+                            <p>Worked actively as an education consultant for Canada and the UK, advising students on
+                                studying abroad and helping them select a course and university, as well as assisting
+                                them in obtaining the correct or necessary paperwork for further procedure. filling out
+                                applications for students in institutions, student preparation for interviews (CAS,
+                                creditability, and other aspects), aiding in the creation of compelling Statements of
+                                Purpose for both countries, recommending the right financial requirements throughout the
+                                process, actively taking part in branding activities, and other events hosted by the
+                                appropriate authorities.</p>
+                            <hr>
+                        </div>
+                        <div class="w3-container">
+                            <h5 class="w3-opacity"><b>Designation - Student Visa Counsellor / Sky Heaven Holiday &
+                                    Immigration
+                                </b></h5>
+                            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Sept 2019 -
+                                April 2021</h6>
+                            <p>Served as a student visa advisor mostly for Canada, the USA, and the UK, keeping students
+                                in mind by responding to their inquiries on the finest colleges or programmes for them.
+                                assisting them to acquire the appropriate or required documentation for the following
+                                stage, filing for student visas, working in harmony and with dedication, managing the
+                                IELTS and student visa departments, communicating with coworkers or faculty members, and
+                                receiving periodic updates on the prospective student's visa application. </p><br>
+                        </div>
+                        <div class="w3-container">
+                            <h5 class="w3-opacity"><b>Designation - Teaching Faculty / STC Education
+                                </b></h5>
+                            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>May 2018 - June
+                                2019</h6>
+                            <p>English and social studies tutorial reviewing course content and assignments, helping
+                                students with their homework, projects, exam preparation, papers, research, and other
+                                academic chores, helping kids understand important ideas, especially those gained in
+                                class, Effective recordkeeping requires answering questions. </p><br>
+                        </div>
+                    </div>
+
+                    <div class="w3-container w3-card w3-white"
+                        style="background-color:rgb(128, 128, 128,0.1) !important ;" id="box">
+                        <h2 class="w3-text-grey w3-padding-16"><i
+                                class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education
+                        </h2>
+
+                        <div class="w3-container">
+                            <h5 class="w3-opacity"><b>Post Graduation Diploma in International Business </b></h5>
+
+                            <p>It aims to prepare facing the challenges and issues in international business
+                                Helpful for implementation of marketing and financial principles and strategies in
+                                multinational and global markets,focus on International Economics, Cultural, Political
+                                and Legal Environment, how they are integrated and studied as prelude to planning
+                                strategies for international business
+
+                                ​</p>
+                            <hr>
+                        </div>
+                        <div class="w3-container">
+                            <h5 class="w3-opacity"><b>Bachelor of Commerce </b></h5>
+
+                            <p>It imparts the managerial Skills while Focusing on a particular Business
+                                area, Helpful to Gain in-depth Knowledge on core subjects such as
+                                accounting,law,statistics,finance, marketing, Economic, HRM just to name a few.</p><br>
+                        </div>
+                    </div>
+
+                    <!-- End Right Column -->
+                </div>
+
+                <!-- End Grid -->
+            </div>
+            <!-- End Page Container -->
+            </div>
+            </div>
+        </section>
+        <hr style="border: 2px solid rgb(103, 90, 90);margin-left: 20px;margin-right: 20px;border-radius: 60px;">
+        <h2 class="section-title" style="color:black ;">Achievements</h2>
+        <div class="achievements" style="font-size:10px ;">
+            <div class="box_achievments">
+                <div class="imgbox_achievments">
+                    <img src="assets/img/work1.jpeg" alt="">
+                </div>
+                <div class="content">
+                    <h5 style="font-size:20px ;">Canada Training & Certification Program
+                        <span style="font-size:15px ;">Issuing Organization - AECC Global</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="box_achievments">
+                <div class="imgbox_achievments">
+                    <img src="assets/img/work2.png" alt="">
+                </div>
+                <div class="content">
+                    <h5 style="font-size:20px">Social Change : How can Marketing Help</br>
+                        <span style="font-size:15px ;">Issuing Organization - Griffith University</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="box_achievments">
+                <div class="imgbox_achievments">
+                    <img src="assets/img/work3.jpeg" alt="">
+                </div>
+                <div class="content">
+                    <h5 style="font-size:20px">Qualified Canada Consultant</br>
+                        <span style="font-size:15px ;">Digital Marketing</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="box_achievments">
+                <div class="imgbox_achievments">
+                    <img src="assets/img/work4.png" alt="">
+                </div>
+                <div class="content">
+                    <h5 style="font-size:20px">Digital Skill : Social Media</br>
+                        <span style="font-size:15px ;">Digital Marketing</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="box_achievments">
+                <div class="imgbox_achievments">
+                    <img src="assets/img/work5.png" alt="">
+                </div>
+                <div class="content">
+                    <h5 style="font-size:20px">Study UK : Prepare to Study & Live in the UK</br>
+                        <span style="font-size:15px ;">Digital Marketing</span>
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <hr style="border: 2px solid rgb(103, 90, 90);margin-left: 20px;margin-right: 20px;border-radius: 60px;">
+        <!--===== CONTACT =====-->
+        <section class="contact section" id="contact">
+            <h2 class="section-title" style="color:black ;">Contact</h2>
+
+            <div class="contact__container bd-grid">
+                <form onsubmit="sendmail(); reset(); return false;" class="contact__form" method="post">
+                    <input type="text" placeholder="Name" class="contact__input"  id="name">
+                    <input type="mail" placeholder="Email" class="contact__input" id="email">
+                    <input type="number" class="contact__input" placeholder="Enter your number" id="number">
+                    <textarea name="" placeholder="Type a message" id="message" cols="0" rows="10"
+                        class="contact__input"></textarea>
+                    <input type="submit" class="contact__button button"
+                        style="background-color:rgb(0, 0, 0) ;">
+                </form>
+            </div>
+            <script src="https://smtpjs.com/v3/smtp.js"></script>
+            <script>
+                function sendmail(){
+                Email.send({
+                    Host: "smtp.elasticemail.com",
+                    Username: "bhutyaksh@gmail.com",
+                    Password: "0C42031B7009851D4B82AD02F61E16215ACB",
+                    To: 'bhutyaksh@gmail.com',
+                    From: 'bhutyaksh@gmail.com',
+                    Subject: "This is the subject",
+                    Body: `${document.getElementById("name").value} <br> Contact:- ${document.getElementById("number").value} <br> Email:-${document.getElementById("number").value} <br> message:- ${document.getElementById("message").value}`.toString()
+                }).then(
+                    message => alert("Mail recieved, You will be contacted soon via email so please stay active on your mail and do check your spam folder")
+                );
+            }
+            </script>
+        </section>
+    </main>
+
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+        <p class="footer__title">JYOTI</p>
+        <div class="footer__social">
+            <a href="https://www.linkedin.com/in/jyoti2910" class="footer__icon"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://instagram.com/_jyoti_khatri_?igshid=ZDdkNTZiNTM=" class="footer__icon"><i
+                    class='bx bxl-instagram'></i></a>
+            <a href="https://twitter.com/Khatrijyoti2910?t=qWs1J9gALPp-LpjtKaMV8Q&s=08" class="footer__icon"><i
+                    class='bx bxl-twitter'></i></a>
+        </div>
+        <p class="footer__copy">&#169;All rigths reserved</p>
+    </footer>
+
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
